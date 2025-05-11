@@ -36,7 +36,7 @@ describe("Demoblaze test", () => {
       expect(alr).to.contains("Thanks for the message!!");
     });
   });
-  it.only('add products', () => {
+  it('add products', () => {
     // Helper function to add one random product from a category
     const addRandomProductFromCategory = (category) => {
       cy.get(`[onclick="byCat('${category}')"]`).click();
@@ -63,15 +63,30 @@ describe("Demoblaze test", () => {
   
     // Visit site first
     cy.visit('https://www.demoblaze.com/');
-  
+
+    cy.get("#login2").click();
+    cy.get("#loginusername").type(userData.username, { force: true });
+    cy.get("#loginpassword").type(userData.password, { force: true });
+    cy.get('[onclick="logIn()"]').click();
+
+    cy.get('#logInModal > .modal-dialog > .modal-content > .modal-header').should('not.be.visible')
     // Add products from each category
     addRandomProductFromCategory('phone');
+
+    cy.then(() => {
+      console.log('Products added:', productsNames);
+    });
+
     addRandomProductFromCategory('notebook');
+
+    cy.then(() => {
+      console.log('Products added:', productsNames);
+    });
+
     addRandomProductFromCategory('monitor');
-  
-    // Final log
+
     cy.then(() => {
       console.log('Products added:', productsNames);
     });
   });
-});
+})
