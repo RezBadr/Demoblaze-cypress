@@ -28,7 +28,7 @@ It simulates the entire user journey: sign-up, login, adding products to the car
 ### Steps
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/RezBadr/demoblaze-cypress.git
 cd your-repo-name
 npm install
 
@@ -72,3 +72,4 @@ README.md
 "devDependencies": {
   "cypress": "^13.7.0"
 }
+```
